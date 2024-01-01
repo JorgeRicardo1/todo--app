@@ -1,0 +1,66 @@
+<div class="container">
+  <p>labs works!</p>
+  <ul>
+    <li *ngFor="let task of tasks">
+      {{task}}
+    </li>
+  </ul>
+
+  <hr/>
+  <h2>{{ 'Hola'.repeat(4)}}</h2>
+  <hr/>
+  <button (click)="clickHandler()">Click me</button>
+  <button (dblclick)="clickHandler()">Click me</button>
+  <p>(change)</p>
+  <input type="number" [value]="person().age" (change)="changeHandler($event)">
+  <p>Keydown</p>
+  <input type="text" [value]="person.name" (keydown)="keydownHandler($event)">
+  <p>Keydown shif</p>
+  <input type="text" [value]="person.name" (keydown.shift.t)="clickHandler()">
+  <hr/>
+  <p>signal</p>
+  <h3>{{ name() }}</h3>
+  <input type="text" [value]="name()" (change)="changeHandler($event)">
+  <p>name: {{name()}}</p>
+  <hr/>
+  <p>*nfIf</p>
+  <div *ngIf="1 !== 1">
+    My Content
+  </div>
+  <div *ngIf="name() === 'jorge'; else elseBlock">
+    My Content es jorge
+  </div>
+  <ng-template #elseBlock>
+    Soy jorge y menor de 18
+  </ng-template>
+  <hr/>
+  <input type="color" [formControl]="colorCtrl1">
+  <p>Color: {{ colorCtrl1.value }}</p>
+  <svg>
+    <g>
+      <rect x="0" y="0" height="100" width="100" [attr.fill]="colorCtrl1.value"/>
+    </g>
+  </svg>
+  <hr/>
+  <input type="number" [formControl]="withCtrl">
+  <span class="box" [style.width.px]="withCtrl.value"></span>
+  <hr/>
+  <p>
+    <input type="text" [formControl]="nameCtrl"><br/>
+    <span class="message-error" [class.active]="nameCtrl.invalid || nameCtrl.touched">Nombre invalido</span>
+  </p>
+  <p>
+    <input type="text">
+  </p>
+  @if (true) {
+    <div>hey</div>
+  }
+  <ul>
+    @for(task of tasks; track task; let i = $index){
+      <li>{{ i }} {{ task }}</li>
+    }@empty {
+      <li><strong>la lista esta vacia</strong></li>
+    }
+  </ul>
+
+</div>
